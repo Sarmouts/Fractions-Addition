@@ -65,21 +65,29 @@ string likeFraction(double x, double y, double a, double b)
 	y *= kapelaki1;
 	a *= kapelaki2;
 	b *= kapelaki2;
-	if (b < 0)
+	if (y < 0 && b < 0)
 	{
-		return simplification(x + a, b);
+		return simplification(-x - a, abs(y));
+	}
+	else if (b < 0)
+	{
+		return simplification(x - a, abs(y));
+	}
+	else if (y < 0)
+	{
+		return simplification(-x + a, abs(y));
 	}
 	else
 	{
-		return simplification(x + a, y);
+		return simplification(x + a, abs(y));
 	}
 }
 int main()
 {
+	cout << "Welcome to Fraction Addition calculator" << endl;
+	cout << "---------------------------------------" << endl;
 	while (true)
 	{
-		cout << "Welcome to Fraction Addition calculator" << endl;
-		cout << "---------------------------------------" << endl;
 		double x, y, a, b;
 		cout << "x/y + a/b" << endl;
 		cout << "---------" << endl;

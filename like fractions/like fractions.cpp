@@ -99,7 +99,16 @@ int main()
 		cin >> a;
 		cout << "Enter denoverator b: ";
 		cin >> b;
-		cout << likeFraction(x, y, a, b) << endl;
+		if (x != round(x) || y != round(y) || a != round(a) || b != round(b))
+		{
+			cout << "All values must be integers" << endl;
+			cout << "======================================" << endl;
+		}
+		else
+		{
+			cout << likeFraction(x, y, a, b) << endl;
+			cout << "======================================" << endl;
+		}
 	}
 }
 

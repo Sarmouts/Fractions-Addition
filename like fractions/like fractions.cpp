@@ -9,6 +9,10 @@ double LCM(double a, double b)
 	{
 		return fmax(a, b);
 	}
+	else if (a / 2 == round(a / 2) && b / 2 == round(b / 2))
+	{
+		return a * b / 2;
+	}
 	else
 	{
 		return a * b;

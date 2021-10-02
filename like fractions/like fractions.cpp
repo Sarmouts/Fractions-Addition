@@ -123,6 +123,29 @@ int main()
 			cout << "The value of y and b mustn't be 0" << endl;
 			cout << "===================" << endl;
 		}
+		else if (abs(y) == abs(b))
+		{
+			if (y < 0 && b < 0)
+			{
+				cout << simplification(-x - a, abs(y)) << endl;
+				cout << "======================================" << endl;
+			}
+			else if (b < 0)
+			{
+				cout << simplification(x - a, abs(y)) << endl;
+				cout << "======================================" << endl;
+			}
+			else if (y < 0)
+			{
+				cout << simplification(-x + a, abs(y)) << endl;
+				cout << "======================================" << endl;
+			}
+			else
+			{
+				cout << simplification(x + a, abs(y)) << endl;
+				cout << "======================================" << endl;
+			}
+		}
 		else
 		{
 			cout << likeFraction(x, y, a, b) << endl;

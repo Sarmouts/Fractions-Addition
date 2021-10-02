@@ -3,20 +3,35 @@
 #include <string>
 using namespace std;
 
-double LCM(double a, double b)
+int MKD(int x, int y)
 {
-	if (a / b == round(a / b) || b / a == round(b / a))
+	int MKD = 0;
+	for (int i = 0; i >= 0; i++)
 	{
-		return fmax(a, b);
+		if (x == 0)
+		{
+			MKD = abs(y);
+			break;
+		}
+		else if (y == 0)
+		{
+			MKD = abs(x);
+			break;
+		}
+		else if (abs(x) > abs(y))
+		{
+			x %= abs(y);
+		}
+		else if (abs(x) < abs(y))
+		{
+			y %= abs(x);
+		}
 	}
-	else if (a / 2 == round(a / 2) && b / 2 == round(b / 2))
-	{
-		return a * b / 2;
-	}
-	else
-	{
-		return a * b;
-	}
+	return MKD;
+}
+int LCM(int a, int b)
+{
+	return a * b / MKD(a, b);
 }
 string simplification(double num, double den)
 {
@@ -59,9 +74,9 @@ string simplification(double num, double den)
 		else return "-" + to_string(static_cast<int>(abs(num) / MKD)) + "/" + to_string(static_cast<int>(abs(den) / MKD));
 	}
 }
-string likeFraction(double x, double y, double a, double b)
+string likeFraction(int x, int y, int a, int b)
 {
-	double lcm, kapelaki1, kapelaki2;
+	int lcm, kapelaki1, kapelaki2;
 	lcm = LCM(abs(y), abs(b));
 	kapelaki1 = lcm / abs(y);
 	kapelaki2 = lcm / abs(b);
@@ -92,7 +107,7 @@ int main()
 	cout << "---------------------------------------" << endl;
 	while (true)
 	{
-		double x, y, a, b;
+		int x, y, a, b;
 		cout << "x/y + a/b" << endl;
 		cout << "---------" << endl;
 		cout << "Enter numerator x: ";
@@ -103,10 +118,10 @@ int main()
 		cin >> a;
 		cout << "Enter denoverator b: ";
 		cin >> b;
-		if (x != round(x) || y != round(y) || a != round(a) || b != round(b))
+		if (y == 0 || b == 0)
 		{
-			cout << "All values must be integers" << endl;
-			cout << "======================================" << endl;
+			cout << "The value of y and b mustn't be 0" << endl;
+			cout << "===================" << endl;
 		}
 		else
 		{
